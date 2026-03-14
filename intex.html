@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adorachou Boutique</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f4f4f4;
+}
+
+/* HEADER */
+
+header{
+background:#0c3b1e;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* BANNIERE AFFICHE */
+
+.banner{
+display:flex;
+justify-content:center;
+padding:30px;
+animation:fadeIn 2s;
+}
+
+.banner img{
+
+width:90%;
+max-width:900px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+animation:zoom 6s infinite alternate;
+
+}
+
+/* ANIMATIONS */
+
+@keyframes zoom{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.05);
+}
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+/* RECHERCHE */
+
+.search{
+text-align:center;
+margin:20px;
+}
+
+.search input{
+
+padding:12px;
+width:60%;
+max-width:400px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+/* MENU */
+
+nav{
+text-align:center;
+margin-bottom:20px;
+}
+
+nav button{
+
+padding:10px 15px;
+margin:5px;
+border:none;
+background:#ff4081;
+color:white;
+cursor:pointer;
+border-radius:5px;
+
+}
+
+/* PRODUITS */
+
+.products{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+.card{
+
+background:white;
+width:230px;
+margin:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+overflow:hidden;
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:scale(1.05);
+
+}
+
+.card img{
+
+width:100%;
+height:230px;
+object-fit:cover;
+
+}
+
+.price{
+
+color:green;
+font-weight:bold;
+font-size:18px;
+
+}
+
+select{
+
+padding:5px;
+margin:5px;
+
+}
+
+.add{
+
+background:#2196f3;
+color:white;
+border:none;
+padding:8px;
+margin:5px;
+cursor:pointer;
+
+}
+
+/* PANIER */
+
+#cart{
+
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+width:260px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+}
+
+.whatsappBtn{
+
+background:#25D366;
+color:white;
+border:none;
+padding:10px;
+width:100%;
+margin-top:10px;
+cursor:pointer;
+
+}
+
+/* WHATSAPP FLOTTANT */
+
+.whatsappFloat{
+
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+color:white;
+font-size:25px;
+padding:15px;
+border-radius:50%;
+text-decoration:none;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+
+}
+
+.map{
+
+width:100%;
+height:300px;
+border:0;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Adorachou Boutique</h1>
+<p>Vente de vêtements tendance en ligne</p>
+<p>📍 Daloa - Côte d'Ivoire</p>
+
+</header>
+
+
+<!-- AFFICHE AVEC ANIMATION -->
+
+<section class="banner">
+
+<img src="affiche.jpg" alt="Affiche Adorachou Boutique">
+
+</section>
+
+
+<!-- RECHERCHE -->
+
+<div class="search">
+
+<input type="text" id="search" placeholder="Rechercher un vêtement..." onkeyup="searchProduct()">
+
+</div>
+
+
+<!-- MENU -->
+
+<nav>
+
+<button onclick="filter('all')">Tous</button>
+<button onclick="filter('femme')">Femmes</button>
+<button onclick="filter('homme')">Hommes</button>
+
+</nav>
+
+
+<!-- PRODUITS -->
+
+<section class="products">
+
+<div class="card femme">
+
+<img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a14">
+
+<h3>Mini Jupe</h3>
+
+<p class="price">8000 FCFA</p>
+
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<button class="add" onclick="addCart('Mini Jupe',8000)">Ajouter</button>
+
+</div>
+
+
+<div class="card femme">
+
+<img src="https://images.unsplash.com/photo-1520975928316-56c4e29c6bce">
+
+<h3>Ensemble complet femme</h3>
+
+<p class="price">10000 FCFA</p>
+
+<select>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<button class="add" onclick="addCart('Ensemble femme',10000)">Ajouter</button>
+
+</div>
+
+
+<div class="card homme">
+
+<img src="https://images.unsplash.com/photo-1520975954732-35dd22299614">
+
+<h3>Chemise Homme</h3>
+
+<p class="price">7000 FCFA</p>
+
+<select>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<button class="add" onclick="addCart('Chemise Homme',7000)">Ajouter</button>
+
+</div>
+
+
+<div class="card homme">
+
+<img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
+
+<h3>T-shirt tendance</h3>
+
+<p class="price">6000 FCFA</p>
+
+<select>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<button class="add" onclick="addCart('T-shirt',6000)">Ajouter</button>
+
+</div>
+
+</section>
+
+
+<!-- PANIER -->
+
+<div id="cart">
+
+<h3>🛒 Panier</h3>
+
+<ul id="cartItems"></ul>
+
+<p>Livraison : 1000 FCFA</p>
+
+<p>Total : <span id="total">0</span> FCFA</p>
+
+<button class="whatsappBtn" onclick="orderWhatsApp()">
+
+Commander sur WhatsApp
+
+</button>
+
+</div>
+
+
+<!-- BOUTON WHATSAPP -->
+
+<a class="whatsappFloat" href="https://wa.me/2250153835152">💬</a>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>Notre localisation</h3>
+
+<iframe class="map"
+src="https://maps.google.com/maps?q=Daloa%20Cote%20d%20Ivoire&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+<p>WhatsApp : +225 0153835152</p>
+
+<p>Adorachou Boutique © 2026</p>
+
+</footer>
+
+
+<script>
+
+let cart=[]
+let total=0
+
+function addCart(name,price){
+
+cart.push({name,price})
+
+total+=price
+
+updateCart()
+
+}
+
+function updateCart(){
+
+let list=document.getElementById("cartItems")
+
+list.innerHTML=""
+
+cart.forEach(item=>{
+
+let li=document.createElement("li")
+
+li.innerText=item.name+" - "+item.price+" FCFA"
+
+list.appendChild(li)
+
+})
+
+document.getElementById("total").innerText=total+1000
+
+}
+
+function orderWhatsApp(){
+
+let message="Bonjour Adorachou Boutique%0AJe veux commander :%0A"
+
+cart.forEach(item=>{
+message+=item.name+" - "+item.price+" FCFA%0A"
+})
+
+message+="Livraison : 1000 FCFA%0ATotal : "+(total+1000)+" FCFA"
+
+window.open("https://wa.me/2250153835152?text="+message)
+
+}
+
+function filter(cat){
+
+let products=document.querySelectorAll(".card")
+
+products.forEach(p=>{
+
+if(cat=="all"){
+p.style.display="block"
+}
+
+else if(p.classList.contains(cat)){
+p.style.display="block"
+}
+
+else{
+p.style.display="none"
+}
+
+})
+
+}
+
+function searchProduct(){
+
+let input=document.getElementById("search").value.toLowerCase()
+
+let products=document.querySelectorAll(".card")
+
+products.forEach(p=>{
+
+let name=p.innerText.toLowerCase()
+
+if(name.includes(input)){
+p.style.display="block"
+}
+
+else{
+p.style.display="none"
+}
+
+})
+
+}
+
+</script>
+
+</body>
+</html>
